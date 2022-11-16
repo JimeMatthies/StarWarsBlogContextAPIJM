@@ -5,6 +5,43 @@ body {
     margin: 0;
 }
 
+.navbar {
+    background-color: black;
+}
+
+.navbar-brand img {
+    height: 90px;
+}
+
+.nav-link {
+    color: white;
+}
+
+.nav-link.active {
+    color: #FFE81F;
+}
+
+.nav-link:hover, a.nav-link:focus {
+    color: #FFE81F;
+}
+
+.navbar-toggler {
+    background-color: black;
+    color: #FFE81F;
+}
+
+.dropdown-menu {
+    background-color: black;
+}
+
+.dropdown-item {
+    color: white;
+}
+
+.dropdown-item:hover {
+    background-color: #FFE81F;
+}
+
 .footer {
     background-color: rgb(46, 46, 46);
     font-family: 'Rokkitt', serif;
