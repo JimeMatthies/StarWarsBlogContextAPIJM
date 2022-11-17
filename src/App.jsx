@@ -1,13 +1,14 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import injectContext from "./store/appContext";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import Home from "./views/Home";
 import Characters from "./views/Characters";
 import Planets from "./views/Planets";
 import Details from "./views/Details";
 
-const App = ({ copyright }) => {
+const App = () => {
     return (
         <BrowserRouter>
             <Navbar/>
@@ -17,9 +18,9 @@ const App = ({ copyright }) => {
                 <Route path="/planets" element={<Planets />} />
                 <Route path="/:section/:id" element={<Details/>} />
             </Routes>
-            <Footer footer={copyright} />
+            <Footer />
         </BrowserRouter>
     )
 }
 
-export default App;
+export default injectContext(App);

@@ -1,9 +1,13 @@
-import React from "react";
-import SWLogo from "../img/SWLogo.svg"
-import { FaBars } from 'react-icons/fa';
+import React, { useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { Context } from "../store/appContext";
+import { FaBars, FaTrashAlt } from 'react-icons/fa';
+import SWLogo from "../img/SWLogo.svg";
 
 const Navbar = () => {
+
+    const { store, actions } = useContext(Context);
+
     return (
         <nav className="navbar navbar-expand-lg">
             <div className="container-fluid">
@@ -26,12 +30,20 @@ const Navbar = () => {
                         </NavLink>
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Favorites
+                                Favorites <span className="badge bg-warning text-dark">{store.favorite.length}</span>
                             </a>
                             <ul className="dropdown-menu dropdown-menu-end">
-                                <li><a className="dropdown-item" href="#">1 Favorite</a></li>
-                                <li><a className="dropdown-item" href="#">2 Favorite</a></li>
-                                <li><a className="dropdown-item" href="#">3 Favorite</a></li>
+                                {store.favorite.length > 0 ? (
+                                    store.favorite.map((favorite, index) => {
+                                        return (
+                                            <NavLink to={"/" + store.section + "/" + store.id} className="dropdown-item d-flex justify-content-between" key={index}>
+                                                {favorite} <FaTrashAlt className="btn-delete" onClick={() => { actions.deleteFavorite({ index }) }} />
+                                            </NavLink>
+                                        );
+                                    })
+                                ) : (
+                                    <li><a className="dropdown-item">No Favorites</a></li>
+                                )}
                             </ul>
                         </li>
                     </ul>
