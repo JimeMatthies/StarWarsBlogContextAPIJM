@@ -1,4 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
+
+	const URL_PEOPLE = "https://swapi.dev/api/people/";
+	const URL_PLANETS = "https://swapi.dev/api/planets/";
+
 	return {
 		store: {
 			people: [],
@@ -6,16 +10,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 			favorite: []
 		},
 		actions: {
-			loadingData: str => {
-				fetch("https://swapi.dev/api/" + str + "/")
-					.then(res => res.json())
-					.then(data => setStore({ [str]: data.results }))
-					.catch(error => console.log(error));
+			getPeople: () => {
+				fetch(URL_PEOPLE)
+					.then((response) => {
+						console.log(response);
+						return response.json();
+					})
+					.then((data) => {
+						console.log(data);
+						setStore({ people: data.results })
+					}).catch(error => {
+						console.log(error);
+					});
 			},
+
+			getPlanets: () => {
+				fetch(URL_PLANETS)
+					.then((response) => {
+						console.log(response);
+						return response.json();
+					})
+					.then((data) => {
+						console.log(data);
+						setStore({ planets: data.results })
+					}).catch(error => {
+						console.log(error);
+					});
+			},
+
 			addFavorite: item => {
 				const store = getStore();
-				const validate = store.favorite.includes(item);
-				if (store.favorite == [] || !validate) {
+				if (store.favorite == [] || !store.favorite.includes(item)) {
 					setStore({ favorite: [...store.favorite, item] });
 				}
 			},

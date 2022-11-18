@@ -6,20 +6,12 @@ function Home() {
 
 	const { store, actions } = useContext(Context);
 
-	useEffect(() => {
-		actions.loadingData("planets");
-		actions.loadingData("people");
-	}, []);
-
-	console.log("PEOPLE", store.people);
-	console.log("PLANETS", store.planets);
-    
 	return (
-		<div>
-			<div className="container-fluid">
-				<div className="characters">
-					<h2>Characters</h2>
-					<div className="row">
+		<div className="container-fluid">
+			<div className="characters">
+				<h2>Characters</h2>
+				<div className="card-deck overflow-auto">
+					<div className="d-flex flex-row flex-nowrap">
 						{store.people.map((character, index) => {
 							return (
 								<Card
@@ -38,25 +30,25 @@ function Home() {
 						})}
 					</div>
 				</div>
-				<div className="container-fluid">
-					<div className="planets">
-						<h2>Planets</h2>
-						<div className="row">
-							{store.planets.map((planets, index) => {
-								return (
-									<Card
-										key={index}
-										name={planets.name}
-										labelText1={"Population: "}
-										labelText2={"Terrain: "}
-										text1={planets.population}
-										text2={planets.terrain}
-										id={index}
-										section="planets"
-									/>
-								);
-							})}
-						</div>
+			</div>
+			<div className="planets">
+				<h2>Planets</h2>
+				<div className="card-deck overflow-auto">
+					<div className="d-flex flex-row flex-nowrap">
+						{store.planets.map((planets, index) => {
+							return (
+								<Card
+									key={index}
+									name={planets.name}
+									labelText1={"Population: "}
+									labelText2={"Terrain: "}
+									text1={planets.population}
+									text2={planets.terrain}
+									id={index}
+									section="planets"
+								/>
+							);
+						})}
 					</div>
 				</div>
 			</div>

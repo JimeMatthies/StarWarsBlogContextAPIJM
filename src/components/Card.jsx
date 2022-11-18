@@ -16,6 +16,7 @@ function Card (props) {
 					src="https://dummyimage.com/400x200/ffe91f/000000.png"
 					className="card-img-top"
 					alt="Image 400x200"
+					style={{ width: "400px" }}
 				/>
 				<div className="card-body">
 					<h5 className="card-title">{props.name}</h5>
