@@ -2,28 +2,38 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
+import Placeholder from "../img/Placeholder.jpg";
 import PropTypes from "prop-types";
 
-function Card (props) {
+function Card(props) {
 
 	const { store, actions } = useContext(Context);
-/* 	const [selected, setSelected] = useState(<FaHeart />); */
+	/* 	const [selected, setSelected] = useState(<FaHeart />); */
+
+	const picture = props.id + 1;
+	const URL_PICTURE = "https://starwars-visualguide.com/assets/img/" + props.section + "/" + picture + ".jpg";
+	const ALT_PICTURE = "../img/Placeholder.jpg"
+
+	const deleteAll = () => {
+		
+    };
+
 
 	return (
 		<div>
 			<div className="card">
-				<img
+{/* 				<img
 					src="https://dummyimage.com/400x200/ffe91f/000000.png"
 					className="card-img-top"
 					alt="Image 400x200"
 					style={{ width: "400px" }}
-				/>
+				/> */}
+				<img src={props.section == "planets" && props.id == 0 ? ALT_PICTURE : URL_PICTURE} className="card-img-top" alt="Image" style={{ width: "300px" }}/>
 				<div className="card-body">
 					<h5 className="card-title">{props.name}</h5>
 					<p className="card-text">
 						{props.labelText1} {props.text1}
 					</p>
-
 					<p className="card-text">
 						{props.labelText2} {props.text2}
 					</p>
@@ -32,7 +42,7 @@ function Card (props) {
 					</p>
 					<div className="downButtons">
 						<Link to={"/" + props.section + "/" + props.id} className="btn btn-outline-primary">
-							View more!
+							Read more!
 						</Link>
 						<button
 							type="button"

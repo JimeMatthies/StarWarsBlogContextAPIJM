@@ -11,7 +11,7 @@ const Planets = () => {
             <h2>Planets</h2>
             <div className="card-deck overflow-auto">
                 <div className="d-flex flex-row flex-nowrap">
-                    {store.planets.map((planets, index) => {
+                    {!!store.planets && store.planets.length > 0 ? store.planets.map((planets, index) => {
                         return (
                             <Card
                                 key={index}
@@ -24,7 +24,7 @@ const Planets = () => {
                                 section="planets"
                             />
                         );
-                    })}
+                    }) : (<Loading />)}
                 </div>
             </div>
         </div>

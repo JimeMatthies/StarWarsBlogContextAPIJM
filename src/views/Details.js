@@ -9,7 +9,7 @@ const Detail = () => {
 	const [DataInfo, setDataInfo] = useState("");
 
 	useEffect(() => {
-		if (params.section == "character") {
+		if (params.section == "characters") {
 			setDataInfo(store.people[params.id]);
 			console.log(DataInfo, "del if");
 		} else {
@@ -18,7 +18,7 @@ const Detail = () => {
 		}
 	}, []);
     
-	if (params.section == "character") {
+	if (params.section == "characters") {
 		return (
 			<div>
 				<div className="row justify-content-center imgAndTitleDecription">
