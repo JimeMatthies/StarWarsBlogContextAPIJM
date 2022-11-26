@@ -18,7 +18,7 @@ const Navbar = () => {
                     <FaBars />
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul className="navbar-nav justify-content-end flex-grow-1">
+                    <ul className="navbar-nav justify-content-end flex-grow-1 me-5">
                         <NavLink className="nav-link" to="/">
                             Home
                         </NavLink>

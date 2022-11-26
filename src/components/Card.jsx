@@ -12,7 +12,7 @@ function Card(props) {
 
 	const picture = props.id + 1;
 	const URL_PICTURE = "https://starwars-visualguide.com/assets/img/" + props.section + "/" + picture + ".jpg";
-	const ALT_PICTURE = "../img/Placeholder.jpg"
+	const ALT_PICTURE = Placeholder
 
 	const deleteAll = () => {
 		
@@ -21,13 +21,7 @@ function Card(props) {
 
 	return (
 		<div>
-			<div className="card">
-{/* 				<img
-					src="https://dummyimage.com/400x200/ffe91f/000000.png"
-					className="card-img-top"
-					alt="Image 400x200"
-					style={{ width: "400px" }}
-				/> */}
+			<div className="card border-light me-4 mb-4">
 				<img src={props.section == "planets" && props.id == 0 ? ALT_PICTURE : URL_PICTURE} className="card-img-top" alt="Image" style={{ width: "300px" }}/>
 				<div className="card-body">
 					<h5 className="card-title">{props.name}</h5>
@@ -40,8 +34,8 @@ function Card(props) {
 					<p className="card-text">
 						{props.labelText3} {props.text3}
 					</p>
-					<div className="downButtons">
-						<Link to={"/" + props.section + "/" + props.id} className="btn btn-outline-primary">
+					<div className="downButtons d-flex justify-content-between">
+						<Link to={"/" + props.section + "/" + props.id} className="btn btn-outline-light">
 							Read more!
 						</Link>
 						<button

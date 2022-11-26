@@ -8,10 +8,10 @@ function Home() {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="container-fluid">
-			<div className="characters">
+		<div className="container">
+			<div className="characters container-fluid p-0 mb-4">
 				<h2>Characters</h2>
-				<div className="card-deck overflow-auto">
+				<div className="card-deck">
 					<div className="d-flex flex-row flex-nowrap">
 						{!!store.people && store.people.length > 0 ? store.people.map((character, index) => {
 							return (
