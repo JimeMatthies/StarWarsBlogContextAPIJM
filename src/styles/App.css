@@ -82,6 +82,15 @@ p {
     padding: 20px;
 }
 
+.imageDetail {
+    width: 500px;
+}
+
+hr {
+    color: #FFE81F;
+    height: 3px !important;
+}
+
 ::-webkit-scrollbar {
     width: 12px;
     height: 10px;

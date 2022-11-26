@@ -24,7 +24,7 @@ const Detail = () => {
 		return (
 			<div className="container">
 				<div className="row justify-content-center">
-					<img src={URL_PICTURE} alt="Image" className="imageDetail" />
+					<img src={URL_PICTURE} alt="Image" className="imageDetail"/*  style={{ width: "500px" }} *//>
 					<div className="titleDetailDescription">
 						<h2>{details.name} </h2>
 						<p className="textDetail">
@@ -34,32 +34,27 @@ const Detail = () => {
 				</div>
 				<hr />
 				<div className="row dataBelow">
-					<div>
+					<div className="col-2">
 						<h5>Name</h5>
 						<p>{details.name}</p>
 					</div>
-
-					<div>
+					<div className="col-2">
 						<h5>Birth Year</h5>
 						<p>{details.birth_year}</p>
 					</div>
-
-					<div>
+					<div className="col-2">
 						<h5>Gender</h5>
 						<p>{details.gender}</p>
 					</div>
-
-					<div>
+					<div className="col-2">
 						<h5>Height</h5>
 						<p>{details.height}</p>
 					</div>
-
-					<div>
+					<div className="col-2">
 						<h5>Skin Color</h5>
 						<p>{details.skin_color}</p>
 					</div>
-
-					<div>
+					<div className="col-2">
 						<h5>Eye Color</h5>
 						<p>{details.eye_color}</p>
 					</div>
