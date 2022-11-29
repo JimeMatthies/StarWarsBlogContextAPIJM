@@ -1,12 +1,19 @@
-import React, {useState} from "react";
+import React, {useState, useContext } from "react";
+import { Context } from "../store/appContext";
 
 const Search = () => {
 
+    const { store, actions } = useContext(Context);
     const [search, setSearch] = useState("");
 
     const searcher = (event) => {
         setSearch(event.target.value)
         console.log(event.target.value)
+    }
+
+    let result = [];
+    if(!search) {
+        result = store
     }
 
     return (
