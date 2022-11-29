@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import Card from "../components/Card";
+import Loading from "../components/Loading";
 
 const Planets = () => {
 
