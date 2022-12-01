@@ -1,39 +1,55 @@
 import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 import Card from "../components/Card";
 import Loading from "../components/Loading";
 
 function Home() {
 
 	const { store, actions } = useContext(Context);
-	const [search, setSearch] = useState("");
+	const [searchpeople, setSearchpeople] = useState("");
+	const [searchplanet, setSearchplanet] = useState("");
 
-    const searcher = (event) => {
-        setSearch(event.target.value)
-        console.log(event.target.value)
-    }
+	const searcherpeople = (event) => {
+		setSearchpeople(event.target.value)
+		console.log(event.target.value)
+	}
 
-    let searchresult = {};
-	if(!search) {
-		searchresult = store.people;
+	const searcherplanet = (event) => {
+		setSearchplanet(event.target.value)
+		console.log(event.target.value)
+	}
+
+	let searchresultpeople = {};
+	if (!searchpeople) {
+		searchresultpeople = store.people;
 	} else {
-		searchresult = store.people.filter((data) =>
-			data.name.toLowerCase().includes(search.toLowerCase())
+		searchresultpeople = store.people.filter((data) =>
+			data.name.toLowerCase().includes(searchpeople.toLowerCase())
+		)
+	}
+
+	let searchresultplanet = {};
+	if (!searchplanet) {
+		searchresultplanet = store.planets;
+	} else {
+		searchresultplanet = store.planets.filter((data) =>
+			data.name.toLowerCase().includes(searchplanet.toLowerCase())
 		)
 	}
 
 	return (
 		<div className="container">
 			<div className="row">
-				<div className="col-md-5 text-white">
-					<input className="form-control" type="text" placeholder="Search" value={search} onChange={searcher} />
+				<h2 className="col-4"><Link to="/characters">Characters :</Link></h2>
+				<div className="col-md-3 text-white">
+					<input className="input" type="text" placeholder="Search Character" value={searchpeople} onChange={searcherpeople} />
 				</div>
 			</div>
 			<div className="characters container-fluid p-0 mb-4">
-				<h2>Characters</h2>
 				<div className="card-deck">
 					<div className="d-flex flex-row flex-nowrap">
-						{!!searchresult && searchresult.length > 0 ? searchresult.map((character, index) => {
+						{!!searchresultpeople && searchresultpeople.length > 0 ? searchresultpeople.map((character, index) => {
 							return (
 								<Card
 									key={index}
@@ -52,11 +68,16 @@ function Home() {
 					</div>
 				</div>
 			</div>
-			<div className="planets">
-				<h2>Planets</h2>
+			<div className="row">
+				<h2 className="col-4"><Link to="/planets">Planets :</Link></h2>
+				<div className="col-md-3 text-white">
+					<input className="input" type="text" placeholder="Search Planet" value={searchplanet} onChange={searcherplanet} />
+				</div>
+			</div>
+			<div className="planets container-fluid p-0 mb-4">
 				<div className="card-deck overflow-auto">
 					<div className="d-flex flex-row flex-nowrap">
-						{!!store.planets && store.planets.length > 0 ? store.planets.map((planets, index) => {
+						{!!searchresultplanet && searchresultplanet.length > 0 ? searchresultplanet.map((planets, index) => {
 							return (
 								<Card
 									key={index}

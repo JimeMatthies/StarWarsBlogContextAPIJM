@@ -7,7 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			people: [],
 			planets: [],
-			favorite: []
+			favorites: []
 		},
 		actions: {
 			getPeople: () => {
@@ -40,17 +40,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			addFavorite: item => {
 				const store = getStore();
-				store.favorites.includes(people.name)
-					? setStore({ favorites: store.favorites })
-					: setStore({ favorites: store.favorites.concat(people.name) });
-				console.log("Added favorites: ", store.favorites);
+				const validate = store.favorites.includes(item);
+				if (store.favorites == [] || !validate) {
+					setStore({ favorites: [...store.favorites, item] });
+				}
 			},
 
 			deleteFavorite: id => {
 				const store = getStore();
-				const updatedList = [...store.favorite];
+				const updatedList = [...store.favorites];
 				updatedList.splice(id, 1);
-				setStore({ favorite: [...updatedList] });
+				setStore({ favorites: [...updatedList] });
 			}
 		}
 	};

@@ -48,6 +48,15 @@ a.nav-link:focus {
     color: white;
 }
 
+.text-favorite {
+    margin: 0;
+    padding: 5px 0;
+}
+
+.dropdown-item p:hover {
+    color: black;
+}
+
 .dropdown-item:hover {
     background-color: #FFE81F;
 }
@@ -57,10 +66,15 @@ a.nav-link:focus {
     margin: 10px;
 }
 
+a, a:hover, a:focus {
+    color:#FFE81F;
+    text-decoration: none;
+}
+
 h2 {
     color: #FFE81F;
     font-family: Jedi;
-    margin: 20px;
+    margin: 20px !important;
 }
 
 h5 {
@@ -69,6 +83,26 @@ h5 {
 
 p {
     color: white;
+}
+
+.input {
+    color: #FFE81F;
+    background-color: rgb(28, 28, 30);
+    box-shadow: 0 0 .4vw rgba(0, 0, 0, 0.5), 0 0 0 .15vw transparent;
+    border-radius: 0.4vw;
+    border: none;
+    outline: none;
+    padding: 8px 20px;
+    margin: 20px;
+    transition: .4s;
+}
+
+.input:hover {
+    box-shadow: 0 0 0 .15vw #FFE81F;
+}
+
+.input:focus {
+    box-shadow: 0 0 0 .15vw #FFE81F;
 }
 
 .card-deck {

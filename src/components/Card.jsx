@@ -8,11 +8,19 @@ import PropTypes from "prop-types";
 function Card(props) {
 
 	const { store, actions } = useContext(Context);
-	/* 	const [selected, setSelected] = useState(<FaHeart />); */
+/* 	const [selected, setSelected] = useState(<FaHeart />); */
 
 	const picture = props.id + 1;
 	const URL_PICTURE = "https://starwars-visualguide.com/assets/img/" + props.section + "/" + picture + ".jpg";
 	const ALT_PICTURE = Placeholder
+
+	const isfavorite = () => {
+		if (store.favorites.includes(props.name)){
+			actions.deleteFavorite(props.name);
+		} else {
+			actions.addFavorite(props.name);
+		}
+	}
 
 	return (
 		<div>
@@ -37,10 +45,8 @@ function Card(props) {
 							type="button"
 							className="btn btn-outline-warning"
 							id="heart"
-							onClick={() => {
-								actions.addFavorite(props.name);
-							}}>
-							{store.favorite.includes(props.name) ? (<FaHeart />) : (<FaRegHeart />)}
+							onClick={isfavorite}>
+							{store.favorites.includes(props.name) ? (<FaHeart />) : (<FaRegHeart />)}
 						</button>
 					</div>
 				</div>

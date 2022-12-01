@@ -7,6 +7,7 @@ import SWLogo from "../img/SWLogo.svg";
 const Navbar = () => {
 
     const { store, actions } = useContext(Context);
+    console.log(store.favorites);
 
     return (
         <nav className="navbar navbar-expand-lg">
@@ -30,15 +31,19 @@ const Navbar = () => {
                         </NavLink>
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Favorites <span className="badge bg-warning text-dark">{store.favorite.length}</span>
+                                Favorites <span className="badge bg-warning text-dark">{store.favorites.length}</span>
                             </a>
                             <ul className="dropdown-menu dropdown-menu-end">
-                                {store.favorite.length > 0 ? (
-                                    store.favorite.map((favorite, index) => {
+                                {store.favorites.length > 0 ? (
+                                    store.favorites.map((favorite, index) => {
                                         return (
-                                            <NavLink to={"/" + store.section + "/" + store.id} className="dropdown-item d-flex justify-content-between" key={index}>
-                                                {favorite} <FaTrashAlt className="btn-delete" onClick={() => { actions.deleteFavorite({ index }) }} />
-                                            </NavLink>
+                                            <li className="dropdown-item d-flex justify-content-between" key={index}>
+                                                <div className="text-favorite">
+                                                    {favorite}
+                                                </div>
+                                                <FaTrashAlt className="btn-delete" onClick={() => { actions.deleteFavorite({ index }) }} />
+                                            </li>
+                                            
                                         );
                                     })
                                 ) : (
