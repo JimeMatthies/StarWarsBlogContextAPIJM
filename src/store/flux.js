@@ -19,6 +19,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then((data) => {
 						console.log(data);
 						setStore({ people: data.results })
+						localStorage.setItem('people', data.results);
 					}).catch(error => {
 						console.log(error);
 					});
@@ -32,7 +33,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.then((data) => {
 						console.log(data);
-						setStore({ planets: data.results })
+						setStore({ planets: data.results });
+						localStorage.setItem('planets', data.results);
 					}).catch(error => {
 						console.log(error);
 					});
