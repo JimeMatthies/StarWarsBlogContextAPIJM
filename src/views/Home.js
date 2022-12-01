@@ -15,9 +15,9 @@ function Home() {
 
     let searchresult = {};
 	if(!search) {
-		searchresult = store;
+		searchresult = store.people;
 	} else {
-		searchresult = store.filter((data) =>
+		searchresult = store.people.filter((data) =>
 			data.name.toLowerCase().includes(search.toLowerCase())
 		)
 	}
@@ -33,7 +33,7 @@ function Home() {
 				<h2>Characters</h2>
 				<div className="card-deck">
 					<div className="d-flex flex-row flex-nowrap">
-						{!!searchresult.people && searchresult.people.length > 0 ? searchresult.people.map((character, index) => {
+						{!!searchresult && searchresult.length > 0 ? searchresult.map((character, index) => {
 							return (
 								<Card
 									key={index}
@@ -56,7 +56,7 @@ function Home() {
 				<h2>Planets</h2>
 				<div className="card-deck overflow-auto">
 					<div className="d-flex flex-row flex-nowrap">
-						{!!searchresult.planets && searchresult.planets.length > 0 ? searchresult.planets.map((planets, index) => {
+						{!!store.planets && store.planets.length > 0 ? store.planets.map((planets, index) => {
 							return (
 								<Card
 									key={index}

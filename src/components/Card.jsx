@@ -14,11 +14,6 @@ function Card(props) {
 	const URL_PICTURE = "https://starwars-visualguide.com/assets/img/" + props.section + "/" + picture + ".jpg";
 	const ALT_PICTURE = Placeholder
 
-	const deleteAll = () => {
-		
-    };
-
-
 	return (
 		<div>
 			<div className="card border-light me-4 mb-4">
